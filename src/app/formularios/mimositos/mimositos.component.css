@@ -1,0 +1,71 @@
+/* principal.component.scss */
+/* Requiere Bootstrap 5 + Bootstrap Icons (opcional) */
+
+:host {
+  display: block;
+  --pink: #ff80ab;
+  --pink-dark: #ff4d8a;
+  --accent: linear-gradient(90deg, #ff80ab 0%, #ffb6d9 100%);
+}
+
+.main-header {
+  background: var(--accent);
+  color: white;
+  .logo-img { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+  .brand-title { font-size: 1.25rem; margin: 0; }
+  .user-email {
+    background: #fff;
+    color: var(--pink-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  a.btn { color: white; border-color: rgba(255,255,255,0.25); }
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(180deg, rgba(255,128,171,0.06), rgba(255,255,255,0));
+  .hero-title { color: var(--pink-dark); font-weight: 700; animation: floatIn 600ms ease-out; }
+  .btn-pink {
+    background: var(--pink);
+    border: none;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,128,171,0.18);
+    &:hover { background: var(--pink-dark); transform: translateY(-3px); }
+  }
+}
+
+/* Carousel */
+.carousel-section .carousel { height: 420px; overflow: hidden; }
+.carousel-item img, .carousel-item video { object-fit: cover; height: 420px; width: 100%; }
+
+/* MVV cards */
+.card-mvv {
+  transition: transform .25s ease, box-shadow .25s ease;
+  &:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+  img { height: 180px; object-fit: cover; }
+}
+
+/* CTA modelado */
+.modelado-cta { background: linear-gradient(90deg, rgba(255,236,245,0.6), rgba(255,255,255,0)); }
+.modelado-img { max-width: 460px; width: 100%; }
+
+/* Contact */
+.contact-form { transition: transform .2s ease; &:hover { transform: translateY(-6px); } }
+
+/* Footer */
+.footer { background: #1a1a1a; color: #ddd; }
+
+/* small keyframe for entrance */
+@keyframes floatIn {
+  0% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* responsive tweaks */
+@media (max-width: 767px) {
+  .carousel-section .carousel { height: 240px; }
+  .carousel-item img, .carousel-item video { height: 240px; }
+  .main-header { padding: 0.75rem; }
+}
