@@ -1,0 +1,54 @@
+<nav
+  class="bg-pink-100 shadow-md px-6 py-3 flex items-center justify-between sticky top-0 z-50">
+
+  <!-- LOGO -->
+  <div class="flex items-center gap-2">
+    <img src="assets/logo.png" alt="Mimositos Logo" class="w-12 h-12 rounded-full">
+    <span class="text-2xl font-bold text-pink-600">Mimositos</span>
+  </div>
+
+  <!-- NAV LINKS -->
+  <div class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+    <a routerLink="/home" class="hover:text-pink-600 transition">Inicio</a>
+    <a routerLink="/catalogo" class="hover:text-pink-600 transition">Catálogo</a>
+    <a routerLink="/contacto" class="hover:text-pink-600 transition">Contacto</a>
+    <a routerLink="/login" class="hover:text-pink-600 transition">Iniciar Sesión</a>
+  </div>
+
+  <!-- CARRITO -->
+  <div class="flex items-center gap-4">
+
+    <!-- Icono Carrito -->
+    <a routerLink="/carrito"
+       class="relative hover:text-pink-600 transition">
+
+      <!-- Heroicon Carrito -->
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+           stroke="currentColor" class="w-7 h-7">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383
+                1.437M7.5 14.25a3 3 0 00-3 3h15a3 3 0 00-3-3m-9
+                0h9m-9 0L6.106 5.272A1.125 1.125 0 007.21 4H19.5a1.125
+                1.125 0 011.102 1.327l-1.5 7.5A1.125 1.125 0 0117.003
+                14.25H7.5z" />
+      </svg>
+
+      <!-- BURBUJA DE NÚMERO (opcional para futuro) -->
+      <span class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full px-2 py-0.5"
+            *ngIf="cartCount > 0">
+        {{ cartCount }}
+      </span>
+    </a>
+
+    <!-- Menu móvil -->
+    <button data-collapse-toggle="navbar" type="button"
+            class="md:hidden text-gray-700 hover:text-pink-600">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>

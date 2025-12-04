@@ -1,0 +1,120 @@
+<div class="main-container">
+  <h2 class="page-title">
+    <i class="bi bi-heart-fill"></i> {{ pageTitle }}
+  </h2>
+  
+  <!-- Contenedor de los dos visualizadores -->
+  <div class="viewers-container">
+    <!-- Visualizador de Colores (Izquierda) -->
+    <div class="viewer-section">
+      <h3><i class="bi bi-palette"></i> Vista de Colores</h3>
+      <div class="viewer-wrapper">
+        <div class="loading-overlay" [style.display]="loadingColor ? 'flex' : 'none'">
+          <div class="spinner"></div>
+          <span>Cargando...</span>
+        </div>
+        <model-viewer
+          [attr.src]="colorViewerSrc"
+          [attr.alt]="'Mimosito ' + currentAnimal"
+          [attr.ar]="true"
+          [attr.ar-modes]="'webxr scene-viewer quick-look'"
+          [attr.camera-controls]="true"
+          [attr.auto-rotate]="true"
+          [attr.tone-mapping]="'neutral'"
+          [attr.shadow-intensity]="'1'"
+          [attr.scale]="currentSize + ' ' + currentSize + ' ' + currentSize"
+          class="dual-model-viewer"
+          (load)="onColorViewerLoad()"
+          (error)="onColorViewerError()">
+        </model-viewer>
+      </div>
+    </div>
+
+    <!-- Visualizador de Ropa (Derecha) -->
+    <div class="viewer-section">
+      <h3><i class="bi bi-shirt"></i> Vista de Ropa</h3>
+      <div class="viewer-wrapper">
+        <div class="loading-overlay" [style.display]="loadingOutfit ? 'flex' : 'none'">
+          <div class="spinner"></div>
+          <span>Cargando...</span>
+        </div>
+        <model-viewer
+          [attr.src]="outfitViewerSrc"
+          [attr.alt]="'Mimosito ' + currentAnimal"
+          [attr.ar]="true"
+          [attr.ar-modes]="'webxr scene-viewer quick-look'"
+          [attr.camera-controls]="true"
+          [attr.auto-rotate]="true"
+          [attr.tone-mapping]="'neutral'"
+          [attr.shadow-intensity]="'1'"
+          [attr.scale]="currentSize + ' ' + currentSize + ' ' + currentSize"
+          class="dual-model-viewer"
+          (load)="onOutfitViewerLoad()"
+          (error)="onOutfitViewerError()">
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls-wrapper">
+    <!-- CONTROLES DE COLOR (Izquierda) -->
+    <div class="color-controls">
+      <div class="control-group">
+        <label><i class="bi bi-droplet-fill"></i> Color principal:</label>
+        <div class="color-options">
+          <div 
+            *ngFor="let color of colors"
+            class="color-swatch"
+            [class.selected]="isColorSelected(color.name)"
+            [style.background-color]="color.hex"
+            [title]="color.title"
+            (click)="changeColor(color.name)">
+          </div>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label for="sizeRange">
+          <i class="bi bi-zoom-in"></i> Zoom: 
+          <span id="sizeValue">{{ currentSize }}x</span>
+        </label>
+        <input 
+          type="range" 
+          id="sizeRange" 
+          min="0.5" 
+          max="2" 
+          step="0.1" 
+          [value]="currentSize"
+          (input)="onSizeChange($event)">
+      </div>
+    </div>
+
+    <!-- CONTROLES DE ROPA (Derecha) -->
+    <div class="outfit-controls">
+      <div class="control-group">
+        <label><i class="bi bi-person-gear"></i> Ropa y accesorios:</label>
+        <div class="outfit-options">
+          <div 
+            *ngFor="let outfit of outfits"
+            class="outfit-swatch"
+            [class]="'outfit-swatch ' + outfit.class"
+            [class.selected]="isOutfitSelected(outfit.name)"
+            [class.disabled]="outfit.name === 'gorro' && !showGorroOption"
+            [style.display]="outfit.name === 'gorro' && !showGorroOption ? 'none' : 'flex'"
+            [title]="outfit.title"
+            (click)="changeOutfit(outfit.name)">
+            {{ outfit.title.replace(' ', '\n') }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="status-message">
+        <i class="bi bi-info-circle"></i> {{ statusMessage }}
+      </div>
+      
+      <button id="addToCartBtn" (click)="addToCart()">
+        <i class="bi bi-cart-plus"></i> Agregar al carrito
+      </button>
+    </div>
+  </div>
+</div>

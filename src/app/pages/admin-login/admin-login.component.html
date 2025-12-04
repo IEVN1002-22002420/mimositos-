@@ -1,0 +1,63 @@
+<header class="bg-pink-100 shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <img src="assets/logo.png" alt="Mimositos Logo" class="h-10 w-auto">
+      <h1 class="text-2xl font-bold text-pink-600">Mimositos</h1>
+    </div>
+  </div>
+</header>
+
+<section class="min-h-screen bg-gray-100 flex justify-center items-center py-10">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+
+    <h2 class="text-3xl font-bold text-center text-pink-600 mb-6">
+      Admin – Iniciar Sesión
+    </h2>
+
+    <form (ngSubmit)="loginAdmin()" class="space-y-4">
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Correo administrativo</label>
+        <input
+          [(ngModel)]="admin.email"
+          name="email"
+          type="email"
+          required
+          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">ID de Administrador</label>
+        <input
+          [(ngModel)]="admin.admin_id"
+          name="admin_id"
+          type="text"
+          required
+          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Contraseña</label>
+        <input
+          [(ngModel)]="admin.password"
+          name="password"
+          type="password"
+          required
+          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
+      </div>
+
+      <button
+        class="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition font-semibold shadow">
+        Entrar
+      </button>
+    </form>
+
+    <p class="text-center mt-4 text-gray-600 text-sm">
+      ¿Olvidaste tu contraseña? <br>
+      <span class="text-pink-600 font-semibold">
+        Contacta a tu jefe de área.
+      </span>
+    </p>
+
+  </div>
+</section>

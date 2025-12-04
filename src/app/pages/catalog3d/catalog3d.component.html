@@ -1,0 +1,31 @@
+<!-- catalog-3d.component.html -->
+<div class="banner">
+    <h2>Peluches de crochet personalizables</h2>
+    <p>
+        Explora nuestra colección de Mimositos 3D. Ahora puedes personalizarlos con tus colores favoritos y verlos en
+        tiempo real antes de comprar.
+    </p>
+</div>
+
+<div class="container-3d">
+    <div *ngFor="let product of products" class="product-card" [attr.data-product]="product.model"
+        [attr.data-name]="product.name">
+        <model-viewer [attr.src]="product.model" 
+        [attr.alt]="product.name" 
+        [attr.ar]="true"
+        [attr.camera-controls]="true"
+        [attr.auto-rotate]="true" 
+        [attr.shadow-intensity]="'1'">
+        </model-viewer>
+        <h3>{{ product.name }}</h3>
+        <div class="price">${{ product.price }} MXN</div>
+        <div class="product-actions">
+            <button (click)="verEnTuEspacio(product.model)">
+                Personalizar
+            </button>
+            <button (click)="agregarCarrito(product)">
+                Comprar
+            </button>
+        </div>
+    </div>
+</div>

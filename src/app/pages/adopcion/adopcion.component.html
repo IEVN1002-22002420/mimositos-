@@ -1,0 +1,62 @@
+<header class="bg-pink-100 shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <img src="assets/mimologo.png" class="h-10 w-auto">
+      <h1 class="text-2xl font-bold text-pink-600">Mimositos</h1>
+    </div>
+
+    <nav class="hidden md:flex space-x-6 text-gray-600 font-medium">
+      <a routerLink="/inicio" class="hover:text-pink-600">Inicio</a>
+      <a routerLink="/productos" class="hover:text-pink-600">Productos</a>
+      <a routerLink="/personalizar" class="hover:text-pink-600">Personalizar</a>
+      <a routerLink="/login" class="hover:text-pink-600">Entrar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="min-h-screen bg-gray-100 flex justify-center items-center py-10">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg">
+
+    <h2 class="text-3xl font-bold text-center text-pink-600 mb-6">
+      Formulario de Adopción
+    </h2>
+
+    <form class="space-y-4" (ngSubmit)="enviarAdopcion()">
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Nombre del Mimosito</label>
+        <input type="text" [(ngModel)]="form.nombre_mimosito" name="nombre" required
+          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Personalidad</label>
+        <textarea [(ngModel)]="form.personalidad" name="personalidad" required
+          class="w-full p-3 border rounded-lg h-24 focus:ring-2 focus:ring-pink-400 outline-none"></textarea>
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Historia</label>
+        <textarea [(ngModel)]="form.historia" name="historia" required
+          class="w-full p-3 border rounded-lg h-24 focus:ring-2 focus:ring-pink-400 outline-none"></textarea>
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">¿Qué lo hace especial?</label>
+        <textarea [(ngModel)]="form.especial" name="especial" required
+          class="w-full p-3 border rounded-lg h-24 focus:ring-2 focus:ring-pink-400 outline-none"></textarea>
+      </div>
+
+      <button
+        class="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition font-semibold shadow">
+        Enviar solicitud
+      </button>
+
+    </form>
+
+    <p class="text-center text-gray-600 mt-4">
+      Uno de nuestros cuidadores revisará tu solicitud 💖.
+    </p>
+
+  </div>
+</section>
